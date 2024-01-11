@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <!-- Опис menuitem -->
+        <record id="menu_full_text_search" model="ir.ui.menu">
+            <field name="name">Full Text Search</field>
+            <field name="action" ref="action_full_text_search"/>  <!-- Посилання на action -->
+        </record>
+</odoo>

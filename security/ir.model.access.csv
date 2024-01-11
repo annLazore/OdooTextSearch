@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_full_text_search_result,full.text.search.result,model_full_text_search_result,base.group_user,1,1,1,1
+access_full_text_search,full.text.search,model_full_text_search,base.group_user,1,1,1,1
