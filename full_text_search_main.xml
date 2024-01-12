@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Визначення форми для повнотекстового пошуку -->
+    <record id="view_full_text_search_form" model="ir.ui.view">
+        <field name="name">full.text.search.form</field>
+        <field name="model">full.text.search</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!-- Текстове поле для введення пошукового запиту -->
+                        <field name="search_query"/>
+                        <field name="selected_model_ids" widget="many2many_tags" options="{'no_create': True, 'no_create_edit': True}"/>
+
+                        <!-- Кнопка для запуску пошуку -->
+                        <button string="Search" type="object" name="button_search" class="oe_highlight"/>
+                    </group>
+                    <notebook>
+                        <!-- Розділ для відображення результатів пошуку -->
+                        <page string="Search Results">
+                            <field name="search_results" nolabel="1">
+                                <tree>
+                                    <field name="schemaname"/>
+                                    <field name="tablename"/>
+                                    <field name="columnname"/>
+                                    <field name="rowctid"/>
+                                    <field name="match_text"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Визначення дії, яка відкриває вище створену форму -->
+    <record id="action_full_text_search" model="ir.actions.act_window">
+        <field name="name">Full Text Search</field>
+        <field name="res_model">full.text.search</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_full_text_search_form"/>
+    </record>
+
+    <!-- Додавання пункту меню для доступу до форми пошуку -->
+    <menuitem id="menu_full_text_search" name="Full Text Search"
+              action="action_full_text_search" parent="base.menu_custom"/>
+</odoo>
